@@ -20,12 +20,12 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const fetchForecast = async (city: string, months: number) => {
+  const fetchForecast = async (state: string, city: string, months: number) => {
     setLoading(true);
     setError("");
 
     try {
-      const res = await fetch(`http://localhost:5000/forecast?city=${city}&months=${months}`);
+      const res = await fetch(`http://localhost:5000/forecast?state=${state}&city=${city}&months=${months}`);
       if (!res.ok) throw new Error("Failed to fetch forecast");
       const data = await res.json();
       setForecast(data);
